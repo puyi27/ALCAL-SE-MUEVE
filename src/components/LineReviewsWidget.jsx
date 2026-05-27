@@ -32,38 +32,31 @@ export default function LineReviewsWidget() {
             
             if (anecKey && row[anecKey] && row[anecKey].length > 15) {
               const text = row[anecKey].trim();
+              const textLower = text.toLowerCase();
               const barrio = row[barrioKey] ? row[barrioKey].trim() : "Alcalá";
               
-              if (text.toLowerCase() !== 'no' && text.toLowerCase() !== 'ninguna') {
+              if (textLower !== 'no' && textLower !== 'ninguna') {
                 const item = { text, barrio };
-                if (text.includes("121")) specific121.push(item);
-                else if (text.includes("122")) specific122.push(item);
-                else if (text.includes("123")) specific123.push(item);
-                else general.push(item);
+                
+                // Asignación estricta a líneas
+                if (textLower.includes("121")) {
+                  specific121.push(item);
+                } else if (textLower.includes("122")) {
+                  specific122.push(item);
+                } else if (textLower.includes("123") || textLower.includes("upo")) {
+                  specific123.push(item);
+                }
               }
             }
           });
 
-          // Mezclar arrays
+          // Mezclar arrays para que salgan aleatorios cada vez
           const shuffle = (arr) => arr.sort(() => 0.5 - Math.random());
-          specific121 = shuffle(specific121);
-          specific122 = shuffle(specific122);
-          specific123 = shuffle(specific123);
-          general = shuffle(general);
-
-          // Rellenar hasta tener 3 por línea, cogiendo de los generales si faltan
-          const fillTo3 = (specific) => {
-            const result = [...specific];
-            while (result.length < 3 && general.length > 0) {
-              result.push(general.pop());
-            }
-            return result.slice(0, 3);
-          };
-
+          
           setReviewsByLine({
-            '121': fillTo3(specific121),
-            '122': fillTo3(specific122),
-            '123': fillTo3(specific123)
+            '121': shuffle(specific121).slice(0, 3),
+            '122': shuffle(specific122).slice(0, 3),
+            '123': shuffle(specific123).slice(0, 3)
           });
           
           setLoading(false);
