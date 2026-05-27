@@ -68,9 +68,9 @@ export default function TestimonialFeed() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-8 w-full">
         {testimonios.map((t, idx) => (
-          <div key={idx} className="bg-white p-8 rounded-3xl border border-[#117C4E]/10 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+          <div key={idx} className="break-inside-avoid mb-8 bg-white p-8 rounded-3xl border border-[#117C4E]/10 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between">
             <Quote className="absolute -top-4 -right-4 w-24 h-24 text-[#117C4E]/5 -rotate-12" strokeWidth={1} />
             <p className="text-[#011B11]/80 font-light italic leading-relaxed mb-8 relative z-10 text-lg">
               "{t.texto}"
