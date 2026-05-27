@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { gsap } from "gsap";
+import Logo from "./Logo";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,8 +37,8 @@ export default function Navigation() {
     <>
       {/* NAVBAR ESCRITORIO */}
       <header className="hidden md:flex fixed top-0 left-0 w-full z-[8000] px-8 py-6 items-center justify-between bg-gradient-to-b from-[#FBF5E9] to-transparent backdrop-blur-sm pointer-events-auto">
-        <Link to="/" className="text-[#117C4E] font-serif text-3xl tracking-tighter hover:scale-105 transition-transform">
-          ASM.
+        <Link to="/" className="hover:scale-105 transition-transform text-[#011B11]">
+          <Logo className="w-40 h-auto" />
         </Link>
         <nav className="flex gap-8 bg-[#FBF5E9]/90 px-8 py-4 rounded-full border border-[#117C4E]/20 backdrop-blur-md shadow-sm">
           {links.map((link, idx) => (

@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AtSign, Send } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
     <footer className="dark-zone bg-[#011B11] text-[#FBF5E9] py-24 px-8 md:px-24">
       <div className="max-w-[100rem] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
-          <h2 className="text-4xl md:text-6xl font-serif tracking-tighter mb-8 text-[#117C4E]">
-            Alcalá se Mueve
-          </h2>
+          <Logo className="w-56 md:w-72 h-auto text-[#FBF5E9] mb-8" />
           <p className="text-[#FBF5E9]/70 font-light max-w-md leading-relaxed mb-12">
             Iniciativa ciudadana independiente por un transporte público digno en Alcalá de Guadaíra.
           </p>
