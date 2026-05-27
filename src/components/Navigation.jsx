@@ -37,8 +37,8 @@ export default function Navigation() {
     <>
       {/* NAVBAR ESCRITORIO */}
       <header className="hidden md:flex fixed top-0 left-0 w-full z-[8000] px-8 py-6 items-center justify-between pointer-events-auto">
-        <Link to="/" className="hover:scale-105 transition-transform drop-shadow-md">
-          <Logo className="w-16 h-16" />
+        <Link to="/" className="hover:scale-105 transition-transform drop-shadow-md text-[#FBF5E9] mix-blend-difference">
+          <Logo className="w-40 h-auto" />
         </Link>
         <nav className="flex gap-8 bg-[#FBF5E9]/90 px-8 py-4 rounded-full border border-[#117C4E]/20 backdrop-blur-md shadow-sm">
           {links.map((link, idx) => (
