@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-bounce-slow: bounce 3s infinite;
+}
+
+body {
+  background-color: #011B11;
+  margin: 0;
+}
