@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Clock3, Bus, MapPin, Users } from "lucide-react";
+import LiveCharts from '../components/LiveCharts';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,19 +112,8 @@ export default function ElProblema() {
         <p className="text-[#011B11]/70 mb-12 max-w-2xl font-light">
           Estos gráficos se actualizan automáticamente cada vez que alguien responde la encuesta. Son datos reales aportados por los usuarios en el día a día.
         </p>
-        <div className="w-full bg-[#117C4E]/10 border border-[#117C4E]/20 rounded-2xl p-12 md:p-24 flex flex-col items-center justify-center text-center shadow-sm">
-          <h4 className="text-3xl font-serif text-[#011B11] mb-6">Los datos hablan por sí solos</h4>
-          <p className="text-[#011B11]/70 font-light text-lg max-w-xl mb-12">
-            Por políticas de seguridad, Google no permite incrustar directamente la página de gráficos dentro de otra web. Sin embargo, los resultados están publicados y puedes consultarlos en tiempo real.
-          </p>
-          <a 
-            href="https://docs.google.com/forms/d/1xQXCiNjlj4ta_BkyNrsVowkGYnNqB-VyIdn4X0KwrAA/viewanalytics" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 bg-[#117C4E] text-[#FBF5E9] font-medium uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform shadow-lg inline-flex items-center gap-3"
-          >
-            Abrir Informe de Resultados
-          </a>
+        <div className="w-full bg-[#117C4E]/5 border border-[#117C4E]/20 rounded-3xl p-6 md:p-12 shadow-sm">
+          <LiveCharts />
         </div>
       </section>
     </div>
