@@ -144,16 +144,16 @@ export default function Home() {
           <div className="w-full md:w-1/3 flex flex-col justify-center">
              <div className="reveal-wrapper overflow-hidden mb-6">
                 <span className="reveal-text block text-xs uppercase tracking-[0.3em] font-medium text-[#117C4E]">
-                  Reporte en Tiempo Real
+                  Testimonios Reales
                 </span>
              </div>
              <div className="reveal-wrapper overflow-hidden mb-8">
                 <h3 className="reveal-text text-4xl md:text-6xl tracking-tighter font-serif text-[#FBF5E9] leading-[1]">
-                  Estado<br/>de la Red.
+                  La Voz<br/>de Alcalá.
                 </h3>
              </div>
              <p className="text-[#FBF5E9]/60 font-light max-w-sm leading-relaxed mb-8">
-               Únete a nuestra comunidad de Telegram para reportar y enterarte de incidencias en tiempo real.
+               Miles de vecinos sufren a diario las deficiencias de Autocares Casal. Lee sus experiencias y únete a nuestra comunidad de Telegram para organizarnos y exigir un cambio real.
              </p>
              <a href="#" className="w-fit text-[#117C4E] pb-1 border-b border-[#117C4E] hover:opacity-80 uppercase tracking-widest text-sm">
                Unirse a Telegram
