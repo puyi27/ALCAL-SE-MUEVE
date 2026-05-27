@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Instagram } from "lucide-react";
+import { AtSign } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +50,7 @@ export default function Nosotros() {
           
           <div className="flex flex-col sm:flex-row gap-6 mt-8 reveal-nosotros">
             <a href="#" className="flex items-center justify-center gap-3 px-8 py-4 bg-[#117C4E]/10 border border-[#117C4E] text-[#117C4E] rounded-full hover:bg-[#117C4E]/20 transition-colors">
-              <Instagram size={20} />
+              <AtSign size={20} />
               <span>@alcalasemueve</span>
             </a>
             <a href="mailto:contacto@alcalasemueve.com" className="flex items-center justify-center gap-3 px-8 py-4 bg-[#117C4E]/10 border border-[#117C4E] text-[#117C4E] rounded-full hover:bg-[#117C4E]/20 transition-colors">

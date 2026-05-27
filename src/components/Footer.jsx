@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Send } from "lucide-react";
+import { AtSign, Send } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -15,7 +15,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-6">
             <a href="#" className="p-4 bg-[#117C4E]/10 rounded-full hover:bg-[#117C4E]/20 transition-colors text-[#117C4E]">
-              <Instagram size={24} />
+              <AtSign size={24} />
             </a>
             <a href="#" className="p-4 bg-[#117C4E]/10 rounded-full hover:bg-[#117C4E]/20 transition-colors text-[#117C4E]">
               <Send size={24} />
