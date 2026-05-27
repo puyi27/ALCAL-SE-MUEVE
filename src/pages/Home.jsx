@@ -162,6 +162,7 @@ export default function Home() {
             {[
               { name: "M-121", route: "Alcalá - Sevilla (Centro)", status: "Colapsada", color: "bg-red-500", textAlert: "text-red-400" },
               { name: "M-122", route: "Alcalá - Sevilla (Directo)", status: "Retrasos (+25m)", color: "bg-orange-500", textAlert: "text-orange-400" },
+              { name: "M-123", route: "Alcalá - UPO", status: "Crítica", color: "bg-red-600", textAlert: "text-red-500" },
               { name: "M-104", route: "Alcalá - Dos Hermanas", status: "Frecuencia Baja", color: "bg-orange-500", textAlert: "text-orange-400" },
               { name: "Urbanos", route: "Líneas A, B, C, D", status: "Fluido", color: "bg-[#117C4E]", textAlert: "text-[#117C4E]" },
             ].map((line, idx) => (

@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Clock3, Bus, MapPin, Users } from "lucide-react";
 import LiveCharts from '../components/LiveCharts';
+import TestimonialFeed from '../components/TestimonialFeed';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -114,6 +115,7 @@ export default function ElProblema() {
         </p>
         <div className="w-full bg-[#117C4E]/5 border border-[#117C4E]/20 rounded-3xl p-6 md:p-12 shadow-sm">
           <LiveCharts />
+          <TestimonialFeed />
         </div>
       </section>
     </div>
