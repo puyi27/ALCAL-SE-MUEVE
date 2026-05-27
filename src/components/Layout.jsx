@@ -7,7 +7,7 @@ import ScrollToTop from "./ScrollToTop";
 
 export default function Layout() {
   return (
-    <div className="bg-[#011B11] text-[#FBF5E9] font-sans selection:bg-[#117C4E] selection:text-white md:cursor-none overflow-x-hidden min-h-screen flex flex-col">
+    <div className="bg-[#FBF5E9] text-[#011B11] font-sans selection:bg-[#117C4E] selection:text-white md:cursor-none overflow-x-hidden min-h-screen flex flex-col">
       <ScrollToTop />
       <CustomCursor />
       <Navigation />

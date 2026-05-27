@@ -16,12 +16,10 @@ export default function Navigation() {
     { name: "Sobre Nosotros", path: "/nosotros" },
   ];
 
-  // Cerrar el menú móvil al cambiar de ruta
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
-  // Animación del menú móvil
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -37,17 +35,17 @@ export default function Navigation() {
   return (
     <>
       {/* NAVBAR ESCRITORIO */}
-      <header className="hidden md:flex fixed top-0 left-0 w-full z-[8000] px-8 py-6 items-center justify-between bg-gradient-to-b from-[#011B11] to-transparent backdrop-blur-sm pointer-events-auto">
+      <header className="hidden md:flex fixed top-0 left-0 w-full z-[8000] px-8 py-6 items-center justify-between bg-gradient-to-b from-[#FBF5E9] to-transparent backdrop-blur-sm pointer-events-auto">
         <Link to="/" className="text-[#117C4E] font-serif text-3xl tracking-tighter hover:scale-105 transition-transform">
           ASM.
         </Link>
-        <nav className="flex gap-8 bg-[#011B11]/80 px-8 py-4 rounded-full border border-[#117C4E]/20 backdrop-blur-md">
+        <nav className="flex gap-8 bg-[#FBF5E9]/90 px-8 py-4 rounded-full border border-[#117C4E]/20 backdrop-blur-md shadow-sm">
           {links.map((link, idx) => (
             <Link 
               key={idx}
               to={link.path}
               className={`text-sm uppercase tracking-widest font-medium transition-colors hover:text-[#117C4E] ${
-                location.pathname === link.path ? "text-[#117C4E]" : "text-[#FBF5E9]/70"
+                location.pathname === link.path ? "text-[#117C4E]" : "text-[#011B11]/70"
               }`}
             >
               {link.name}
@@ -59,17 +57,17 @@ export default function Navigation() {
       {/* BOTON HAMBURGUESA MOVIL */}
       <button 
         onClick={() => setIsOpen(true)}
-        className="md:hidden hamburger fixed top-6 right-6 z-[9000] p-4 bg-[#117C4E] text-[#011B11] rounded-full hover:scale-105 transition-transform"
+        className="md:hidden hamburger fixed top-6 right-6 z-[9000] p-4 bg-[#117C4E] text-[#FBF5E9] rounded-full hover:scale-105 transition-transform"
       >
         <Menu size={24} />
       </button>
 
       {/* MENU FULLSCREEN MOVIL */}
       {isOpen && (
-        <div className="fixed inset-0 z-[9500] bg-[#011B11] text-[#FBF5E9] flex flex-col justify-center items-center">
+        <div className="fixed inset-0 z-[9500] bg-[#117C4E] text-[#FBF5E9] flex flex-col justify-center items-center dark-zone">
           <button 
             onClick={() => setIsOpen(false)}
-            className="hamburger absolute top-6 right-6 p-4 bg-[#FBF5E9] text-[#011B11] rounded-full hover:scale-105 transition-transform"
+            className="hamburger absolute top-6 right-6 p-4 bg-[#FBF5E9] text-[#117C4E] rounded-full hover:scale-105 transition-transform"
           >
             <X size={24} />
           </button>
@@ -79,7 +77,7 @@ export default function Navigation() {
               <div key={idx} className="overflow-hidden">
                 <Link 
                   to={link.path}
-                  className="menu-link block text-5xl font-serif tracking-tighter hover:text-[#117C4E] transition-colors"
+                  className="menu-link block text-5xl font-serif tracking-tighter hover:text-[#011B11] transition-colors"
                 >
                   {link.name}
                 </Link>

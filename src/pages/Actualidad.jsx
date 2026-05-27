@@ -44,9 +44,9 @@ export default function Actualidad() {
   ];
 
   return (
-    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto">
+    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto text-[#011B11]">
       
-      <section className="mb-32 bg-[#117C4E] text-[#011B11] p-12 md:p-16 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-12">
+      <section className="dark-zone mb-32 bg-[#117C4E] text-[#FBF5E9] p-12 md:p-16 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-12 shadow-lg">
         <div className="flex flex-col gap-6 w-full md:w-2/3">
           <MessageSquareWarning size={48} strokeWidth={1} />
           <h2 className="text-4xl md:text-6xl font-serif tracking-tighter">Únete a nuestra Comunidad</h2>
@@ -54,7 +54,7 @@ export default function Actualidad() {
             Es la forma más rápida y sencilla de enterarte de incidencias en tiempo real. Los propios usuarios avisan cuando el bus va lleno o lleva retraso.
           </p>
         </div>
-        <a href="#" className="w-full md:w-auto px-10 py-5 bg-[#011B11] text-[#FBF5E9] text-center font-medium uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform whitespace-nowrap">
+        <a href="#" className="w-full md:w-auto px-10 py-5 bg-[#011B11] text-[#FBF5E9] text-center font-medium uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md">
           Entrar al Telegram
         </a>
       </section>
@@ -63,24 +63,24 @@ export default function Actualidad() {
         <h2 className="text-4xl md:text-6xl font-serif tracking-tighter mb-6 text-[#117C4E]">
           Comunicados Oficiales
         </h2>
-        <p className="text-xl text-[#FBF5E9]/80 font-light max-w-3xl mb-16">
+        <p className="text-xl text-[#011B11]/80 font-light max-w-3xl mb-16">
           Recopilamos aquí los anuncios oficiales de las entidades responsables, para que puedas contrastarlos con lo que ocurre en la calle.
         </p>
 
-        <div className="timeline border-l-2 border-[#117C4E]/20 pl-8 ml-4 flex flex-col gap-16">
+        <div className="timeline border-l-2 border-[#117C4E]/30 pl-8 ml-4 flex flex-col gap-16">
           {news.map((item, idx) => (
             <div key={idx} className="timeline-item relative">
-              <span className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-[#117C4E] border-4 border-[#011B11]"></span>
+              <span className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-[#117C4E] border-4 border-[#FBF5E9]"></span>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
-                  <span className="text-sm font-medium tracking-widest uppercase text-[#117C4E]">{item.date}</span>
-                  <span className="text-xs px-2 py-1 bg-[#117C4E]/10 text-[#117C4E] rounded-md">{item.source}</span>
+                  <span className="text-sm font-bold tracking-widest uppercase text-[#117C4E]">{item.date}</span>
+                  <span className="text-xs px-2 py-1 bg-[#117C4E]/10 text-[#117C4E] rounded-md font-medium">{item.source}</span>
                 </div>
-                <p className="text-xl text-[#FBF5E9] font-light leading-relaxed">
+                <p className="text-xl text-[#011B11] font-medium leading-relaxed">
                   {item.content}
                 </p>
-                <div className="mt-4 p-6 bg-[#117C4E]/5 border-l-2 border-[#117C4E] text-[#FBF5E9]/70 italic font-light">
-                  <strong className="block text-[#117C4E] not-italic mb-2 text-sm uppercase tracking-wider">Comentario de la plataforma</strong>
+                <div className="mt-4 p-6 bg-white border-l-4 border-[#117C4E] text-[#011B11]/70 italic font-light shadow-sm rounded-r-xl">
+                  <strong className="block text-[#117C4E] not-italic mb-2 text-sm uppercase tracking-wider font-bold">Comentario de la plataforma</strong>
                   {item.comment}
                 </div>
               </div>

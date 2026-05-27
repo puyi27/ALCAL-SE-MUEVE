@@ -4,7 +4,7 @@ import { AtSign, Send } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#011B11] text-[#FBF5E9] border-t border-[#117C4E]/30 py-24 px-8 md:px-24">
+    <footer className="dark-zone bg-[#011B11] text-[#FBF5E9] py-24 px-8 md:px-24">
       <div className="max-w-[100rem] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
           <h2 className="text-4xl md:text-6xl font-serif tracking-tighter mb-8 text-[#117C4E]">
@@ -14,10 +14,10 @@ export default function Footer() {
             Iniciativa ciudadana independiente por un transporte público digno en Alcalá de Guadaíra.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="p-4 bg-[#117C4E]/10 rounded-full hover:bg-[#117C4E]/20 transition-colors text-[#117C4E]">
+            <a href="#" className="p-4 bg-[#117C4E]/20 rounded-full hover:bg-[#117C4E] hover:text-[#FBF5E9] transition-colors text-[#117C4E]">
               <AtSign size={24} />
             </a>
-            <a href="#" className="p-4 bg-[#117C4E]/10 rounded-full hover:bg-[#117C4E]/20 transition-colors text-[#117C4E]">
+            <a href="#" className="p-4 bg-[#117C4E]/20 rounded-full hover:bg-[#117C4E] hover:text-[#FBF5E9] transition-colors text-[#117C4E]">
               <Send size={24} />
             </a>
           </div>

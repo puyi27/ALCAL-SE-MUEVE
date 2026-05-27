@@ -47,7 +47,7 @@ export default function ElProblema() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto">
+    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto text-[#011B11]">
       {/* NARRATIVE SECTION */}
       <section className="mb-32">
         <h1 className="text-6xl md:text-8xl font-serif tracking-tighter mb-12 text-[#117C4E] reveal-text">
@@ -55,24 +55,24 @@ export default function ElProblema() {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           <div>
-            <h2 className="text-3xl md:text-5xl font-serif mb-8 text-[#FBF5E9] leading-tight reveal-text">
+            <h2 className="text-3xl md:text-5xl font-serif mb-8 text-[#011B11] leading-tight reveal-text">
               El autobús que no pasa, que llega tarde, que va lleno...
             </h2>
-            <p className="text-lg text-[#FBF5E9]/70 leading-relaxed font-light mb-6 reveal-text">
+            <p className="text-lg text-[#011B11]/70 leading-relaxed font-light mb-6 reveal-text">
               Llevamos años soportando un servicio que no está a la altura de una ciudad de 75.000 habitantes.
             </p>
           </div>
-          <div className="flex flex-col gap-6 text-[#FBF5E9]/80 font-light reveal-text">
-            <div className="border-l border-[#117C4E] pl-6 py-2">
-              <strong className="block text-[#FBF5E9] mb-1">Retrasos crónicos</strong>
+          <div className="flex flex-col gap-6 text-[#011B11]/80 font-light reveal-text">
+            <div className="border-l-2 border-[#117C4E] pl-6 py-2">
+              <strong className="block text-[#117C4E] mb-1">Retrasos crónicos</strong>
               <p>Esperas de hasta 40 minutos sin ninguna explicación oficial en las paradas.</p>
             </div>
-            <div className="border-l border-[#117C4E] pl-6 py-2">
-              <strong className="block text-[#FBF5E9] mb-1">Hacinamiento</strong>
+            <div className="border-l-2 border-[#117C4E] pl-6 py-2">
+              <strong className="block text-[#117C4E] mb-1">Hacinamiento</strong>
               <p>Autobuses que pasan de largo por ir completamente llenos, dejando a vecinos tirados.</p>
             </div>
-            <div className="border-l border-[#117C4E] pl-6 py-2">
-              <strong className="block text-[#FBF5E9] mb-1">Aislamiento nocturno</strong>
+            <div className="border-l-2 border-[#117C4E] pl-6 py-2">
+              <strong className="block text-[#117C4E] mb-1">Aislamiento nocturno</strong>
               <p>El último urbano sale sobre las 21:00. Si trabajas o estudias de noche, no puedes volver.</p>
             </div>
           </div>
@@ -88,15 +88,15 @@ export default function ElProblema() {
             { label: "Buses al día (M-123)", value: "4", icon: <Bus size={32} /> },
             { label: "Frecuencia Urbana (Línea D)", value: "60", suffix: "m", icon: <MapPin size={32} /> },
           ].map((metric, idx) => (
-            <div key={idx} className="bg-[#117C4E]/10 border border-[#117C4E]/30 p-8 rounded-2xl flex flex-col justify-between reveal-text">
+            <div key={idx} className="bg-[#117C4E]/10 border border-[#117C4E]/30 p-8 rounded-2xl flex flex-col justify-between reveal-text hover:bg-[#117C4E]/20 transition-colors">
               <div className="text-[#117C4E] mb-8">{metric.icon}</div>
               <div>
-                <div className="text-5xl font-serif text-[#FBF5E9] mb-2 flex items-end">
+                <div className="text-5xl font-serif text-[#011B11] mb-2 flex items-end">
                   {metric.prefix && <span className="text-3xl mr-1">{metric.prefix}</span>}
                   <span className="counter-value" data-target={metric.value}>0</span>
                   {metric.suffix && <span className="text-3xl ml-1">{metric.suffix}</span>}
                 </div>
-                <span className="text-sm uppercase tracking-[0.1em] text-[#FBF5E9]/60">{metric.label}</span>
+                <span className="text-sm uppercase tracking-[0.1em] text-[#011B11]/60 font-medium">{metric.label}</span>
               </div>
             </div>
           ))}
@@ -108,10 +108,10 @@ export default function ElProblema() {
         <h3 className="text-3xl md:text-5xl font-serif tracking-tighter mb-8 text-[#117C4E]">
           Resultados en Vivo
         </h3>
-        <p className="text-[#FBF5E9]/70 mb-12 max-w-2xl">
+        <p className="text-[#011B11]/70 mb-12 max-w-2xl font-light">
           Estos gráficos se actualizan automáticamente cada vez que alguien responde la encuesta. Son datos reales aportados por los usuarios en el día a día.
         </p>
-        <div className="w-full h-[600px] bg-[#117C4E]/5 border border-[#117C4E]/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
+        <div className="w-full h-[600px] bg-white border border-[#117C4E]/20 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-sm">
           {/* TODO: SUSTITUIR EL SRC POR EL ENLACE REAL DE RESULTADOS PÚBLICOS DE GOOGLE FORMS */}
           <iframe 
             src="about:blank" 
@@ -120,7 +120,7 @@ export default function ElProblema() {
             frameBorder="0"
           ></iframe>
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="bg-[#011B11] text-[#117C4E] px-6 py-3 rounded-full border border-[#117C4E] font-medium tracking-widest uppercase text-sm">
+            <span className="bg-[#011B11] text-[#FBF5E9] px-6 py-3 rounded-full font-medium tracking-widest uppercase text-sm">
               [TODO: Insertar Iframe de Resultados]
             </span>
           </div>

@@ -66,20 +66,20 @@ export default function Directorio() {
   ];
 
   return (
-    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto">
+    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto text-[#011B11]">
       <h1 className="text-6xl md:text-8xl font-serif tracking-tighter mb-6 text-[#117C4E]">
         Directorio
       </h1>
-      <p className="text-xl text-[#FBF5E9]/80 font-light max-w-3xl mb-16">
+      <p className="text-xl text-[#011B11]/80 font-light max-w-3xl mb-16">
         Información de contacto de las entidades responsables para dirigir quejas formales o solicitar información.
       </p>
 
       <div className="card-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {entities.map((ent, idx) => (
-          <div key={idx} className="card-item bg-[#117C4E]/5 border border-[#117C4E]/20 p-8 rounded-2xl hover:border-[#117C4E]/60 transition-colors">
+          <div key={idx} className="card-item bg-white border border-[#117C4E]/20 p-8 rounded-2xl shadow-sm hover:border-[#117C4E]/60 hover:shadow-md transition-all">
             {ent.icon}
-            <h3 className="text-2xl font-serif text-[#FBF5E9] mb-6">{ent.name}</h3>
-            <ul className="flex flex-col gap-3 text-[#FBF5E9]/70 font-light text-sm">
+            <h3 className="text-2xl font-serif text-[#011B11] mb-6">{ent.name}</h3>
+            <ul className="flex flex-col gap-3 text-[#011B11]/80 font-light text-sm">
               {ent.address && (
                 <li className="flex items-start gap-3">
                   <MapPin size={18} className="text-[#117C4E] shrink-0 mt-0.5" />

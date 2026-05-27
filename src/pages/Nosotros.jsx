@@ -29,13 +29,13 @@ export default function Nosotros() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto min-h-[70vh] flex flex-col justify-center">
+    <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto min-h-[70vh] flex flex-col justify-center text-[#011B11]">
       <h1 className="text-6xl md:text-8xl font-serif tracking-tighter mb-12 text-[#117C4E] reveal-nosotros">
         Quiénes somos<br/>y por qué lo hacemos.
       </h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-        <div className="flex flex-col gap-8 text-xl text-[#FBF5E9]/80 font-light leading-relaxed">
+        <div className="flex flex-col gap-8 text-xl text-[#011B11]/80 font-light leading-relaxed">
           <p className="reveal-nosotros">
             "Alcalá se Mueve" nace en abril de 2026 por un vecino de Alcalá de Guadaíra, que como muchos otros estaba harto de ver cómo el servicio de autobuses de Casal empeora sin que nadie haga nada. Lo que empezó como una queja personal se convirtió en una encuesta anónima, y esa encuesta ha reunido ya a más de 200 vecinos.
           </p>
@@ -44,16 +44,16 @@ export default function Nosotros() {
           </p>
         </div>
         <div className="flex flex-col gap-8">
-          <p className="text-3xl font-serif text-[#FBF5E9] leading-tight reveal-nosotros">
+          <p className="text-3xl font-serif text-[#011B11] leading-tight reveal-nosotros">
             Creemos que el transporte público es un derecho, no un favor. Y que solo organizándonos podemos forzar cambios.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 mt-8 reveal-nosotros">
-            <a href="#" className="flex items-center justify-center gap-3 px-8 py-4 bg-[#117C4E]/10 border border-[#117C4E] text-[#117C4E] rounded-full hover:bg-[#117C4E]/20 transition-colors">
+            <a href="#" className="flex items-center justify-center gap-3 px-8 py-4 bg-white border border-[#117C4E]/30 text-[#117C4E] rounded-full hover:bg-[#117C4E] hover:text-[#FBF5E9] transition-all shadow-sm hover:shadow-md">
               <AtSign size={20} />
               <span>@alcalasemueve</span>
             </a>
-            <a href="mailto:contacto@alcalasemueve.com" className="flex items-center justify-center gap-3 px-8 py-4 bg-[#117C4E]/10 border border-[#117C4E] text-[#117C4E] rounded-full hover:bg-[#117C4E]/20 transition-colors">
+            <a href="mailto:contacto@alcalasemueve.com" className="flex items-center justify-center gap-3 px-8 py-4 bg-white border border-[#117C4E]/30 text-[#117C4E] rounded-full hover:bg-[#117C4E] hover:text-[#FBF5E9] transition-all shadow-sm hover:shadow-md">
               Escríbenos
             </a>
           </div>
