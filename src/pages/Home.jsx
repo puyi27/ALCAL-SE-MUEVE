@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Megaphone, ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Bus, Users, Clock, AlertTriangle, Route } from "lucide-react";
+import { Megaphone } from "lucide-react";
 import { Link } from "react-router-dom";
+import LineReviewsWidget from "../components/LineReviewsWidget";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,36 +160,8 @@ export default function Home() {
              </a>
           </div>
           
-          <div className="w-full md:w-2/3 flex flex-col">
-            {[
-              { name: "M-121", route: "Alcalá - Sevilla (Centro)", status: "Colapsada", color: "bg-red-500", textAlert: "text-red-400" },
-              { name: "M-122", route: "Alcalá - Sevilla (Directo)", status: "Retrasos (+25m)", color: "bg-orange-500", textAlert: "text-orange-400" },
-              { name: "M-123", route: "Alcalá - UPO", status: "Crítica", color: "bg-red-600", textAlert: "text-red-500" },
-              { name: "M-104", route: "Alcalá - Dos Hermanas", status: "Frecuencia Baja", color: "bg-orange-500", textAlert: "text-orange-400" },
-              { name: "Urbanos", route: "Líneas A, B, C, D", status: "Fluido", color: "bg-[#117C4E]", textAlert: "text-[#117C4E]" },
-            ].map((line, idx) => (
-              <div key={idx} className="status-row interactive-row group flex items-center justify-between py-6 border-b border-[#FBF5E9]/10 hover:border-[#117C4E] transition-colors cursor-pointer">
-                <div className="flex items-center gap-6 md:gap-12 w-2/3">
-                  <span className="text-2xl md:text-4xl font-serif text-[#FBF5E9] group-hover:text-[#117C4E] transition-colors min-w-[80px]">
-                    {line.name}
-                  </span>
-                  <span className="text-sm md:text-base font-light text-[#FBF5E9]/60 truncate">
-                    {line.route}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3 justify-end w-1/3">
-                  <span className={`text-xs md:text-sm uppercase tracking-[0.1em] ${line.textAlert} font-medium text-right hidden md:block`}>
-                    {line.status}
-                  </span>
-                  <div className="relative flex h-3 w-3">
-                    {line.status !== "Fluido" && (
-                       <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${line.color} opacity-75`}></span>
-                    )}
-                    <span className={`relative inline-flex rounded-full h-3 w-3 ${line.color}`}></span>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="w-full md:w-2/3 flex flex-col items-end">
+            <LineReviewsWidget />
           </div>
         </div>
       </section>
