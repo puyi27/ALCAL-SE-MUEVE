@@ -153,12 +153,9 @@ export default function Home() {
                 </h3>
              </div>
              <p className="text-[#FBF5E9]/60 font-light max-w-sm leading-relaxed mb-8">
-               Miles de vecinos sufren a diario las deficiencias de Autocares Casal. Lee sus experiencias y únete a nuestra comunidad de Telegram para organizarnos y exigir un cambio real.
+               Miles de vecinos sufren a diario las deficiencias de Autocares Casal. Lee sus experiencias y ayúdanos a exigir un cambio real.
              </p>
              <div className="flex flex-col gap-5">
-               <a href="#" className="w-fit text-[#117C4E] pb-1 border-b border-[#117C4E] hover:opacity-80 uppercase tracking-widest text-sm font-medium">
-                 Unirse a Telegram
-               </a>
                <a href="https://www.autocarescasal.com/noticias-lineas-regulares" target="_blank" rel="noopener noreferrer" className="w-fit text-[#FBF5E9]/50 pb-1 border-b border-[#FBF5E9]/30 hover:text-[#FBF5E9] hover:border-[#FBF5E9] uppercase tracking-widest text-xs transition-colors">
                  Ver incidencias oficiales (Casal)
                </a>

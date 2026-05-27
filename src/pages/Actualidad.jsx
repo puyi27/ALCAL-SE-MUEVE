@@ -45,19 +45,7 @@ export default function Actualidad() {
 
   return (
     <div ref={containerRef} className="pt-32 pb-24 px-8 md:px-24 max-w-[100rem] mx-auto text-[#011B11]">
-      
-      <section className="dark-zone mb-32 bg-[#117C4E] text-[#FBF5E9] p-12 md:p-16 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-12 shadow-lg">
-        <div className="flex flex-col gap-6 w-full md:w-2/3">
-          <MessageSquareWarning size={48} strokeWidth={1} />
-          <h2 className="text-4xl md:text-6xl font-serif tracking-tighter">Únete a nuestra Comunidad</h2>
-          <p className="text-lg font-light">
-            Es la forma más rápida y sencilla de enterarte de incidencias en tiempo real. Los propios usuarios avisan cuando el bus va lleno o lleva retraso.
-          </p>
-        </div>
-        <a href="#" className="w-full md:w-auto px-10 py-5 bg-[#011B11] text-[#FBF5E9] text-center font-medium uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md">
-          Entrar al Telegram
-        </a>
-      </section>
+
 
       <section>
         <h2 className="text-4xl md:text-6xl font-serif tracking-tighter mb-6 text-[#117C4E]">
