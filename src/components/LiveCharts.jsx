@@ -168,40 +168,29 @@ export default function LiveCharts() {
 
         {/* GRÁFICO 3: PROBLEMAS MÁS GRAVES */}
         <div className="bg-white rounded-2xl p-8 border border-[#117C4E]/10 shadow-sm flex flex-col col-span-1 lg:col-span-2">
-          <h5 className="text-xl font-bold text-[#011B11] mb-6 text-center">Top 6: Problemas Más Graves</h5>
-          <div className="w-full h-[400px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={data.problemas}
-                layout="vertical"
-                margin={{ top: 5, right: 30, left: 10, bottom: 5 }}
-              >
-                <XAxis type="number" hide />
-                <YAxis 
-                  type="category" 
-                  dataKey="name" 
-                  width={250} 
-                  tick={{ fontSize: 12, fill: '#011B11' }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <RechartsTooltip 
-                  cursor={{fill: 'rgba(17, 124, 78, 0.05)'}}
-                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                />
-                <Bar 
-                  dataKey="value" 
-                  fill="#117C4E" 
-                  radius={[0, 8, 8, 0]} 
-                  animationDuration={1500}
-                  barSize={30}
-                >
-                  {data.problemas.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+          <h5 className="text-xl font-bold text-[#011B11] mb-8 text-center">Top 6: Problemas Más Graves</h5>
+          <div className="w-full flex flex-col gap-6">
+            {data.problemas.map((item, index) => {
+              const maxVal = Math.max(...data.problemas.map(p => p.value));
+              const percent = (item.value / maxVal) * 100;
+              return (
+                <div key={index} className="flex flex-col gap-2 w-full">
+                  <div className="flex justify-between items-end text-sm md:text-base font-medium text-[#011B11]">
+                    <span className="leading-tight pr-4">{item.name}</span>
+                    <span className="font-bold text-[#117C4E]">{item.value} votos</span>
+                  </div>
+                  <div className="w-full bg-[#117C4E]/10 h-6 md:h-8 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full rounded-full transition-all duration-1000 ease-out flex items-center px-3"
+                      style={{ 
+                        width: `${percent}%`, 
+                        backgroundColor: COLORS[index % COLORS.length] 
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
