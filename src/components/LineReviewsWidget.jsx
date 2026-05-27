@@ -86,7 +86,7 @@ export default function LineReviewsWidget() {
 
   return (
     <div className="w-full flex flex-col gap-6 relative z-10 mt-12 md:mt-0">
-      <div className="bg-[#011B11]/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-[#117C4E]/30 w-full shadow-2xl overflow-hidden flex flex-col h-[600px]">
+      <div className="bg-[#022518] rounded-3xl p-6 md:p-8 border border-[#117C4E]/30 w-full shadow-2xl overflow-hidden flex flex-col h-[600px]">
         
         {/* Cabecera */}
         <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#FBF5E9]/10 shrink-0">
@@ -101,7 +101,7 @@ export default function LineReviewsWidget() {
           {lines.map((line) => (
             <div key={line.id} className="flex flex-col gap-4">
               {/* Etiqueta de la línea */}
-              <div className="flex items-center gap-3 mb-2 sticky top-0 bg-[#011B11]/90 backdrop-blur-sm py-2 z-10 border-b border-[#FBF5E9]/10">
+              <div className="flex items-center gap-3 mb-2 sticky top-0 bg-[#022518] py-2 z-10 border-b border-[#FBF5E9]/10">
                 <span className={`w-3 h-3 rounded-full ${line.color} shadow-[0_0_8px_rgba(0,0,0,0.5)]`} />
                 <div className="flex flex-col">
                   <span className={`font-bold leading-none ${line.text}`}>{line.name}</span>

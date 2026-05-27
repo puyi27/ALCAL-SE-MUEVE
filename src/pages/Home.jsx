@@ -69,22 +69,22 @@ export default function Home() {
   return (
     <div ref={containerRef}>
       <section className="hero-section relative w-full h-[100svh] flex flex-col items-center justify-center overflow-hidden dark-zone">
-        <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden bg-[#011B11]">
           <div 
-            className="parallax-bg w-full h-[125%] bg-cover bg-center"
-            style={{ backgroundImage: "url('/protesta/hero-autobus.jpg')" }}
+            className="parallax-bg w-full h-[125%] bg-cover bg-center will-change-transform"
+            style={{ backgroundImage: "url('/protesta/hero-autobus.jpg')", transform: "translateZ(0)" }}
           />
-          <div className="absolute inset-0 bg-[#011B11]/80 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-[#011B11]/70" />
         </div>
         
         <div className="relative z-10 text-center px-4 w-full max-w-7xl flex flex-col items-center mt-12">
           <div className="overflow-hidden mb-6">
-            <span className="block text-[#117C4E] text-xs md:text-sm uppercase tracking-[0.4em] font-medium bg-[#FBF5E9]/90 px-4 py-1 rounded-full">
+            <span className="block text-[#117C4E] text-xs md:text-sm uppercase tracking-[0.4em] font-medium bg-[#FBF5E9] px-4 py-1 rounded-full shadow-sm">
               Plataforma Ciudadana
             </span>
           </div>
           
-          <h1 className="text-7xl md:text-[10rem] font-serif text-[#FBF5E9] tracking-tighter leading-[0.85] w-full mix-blend-overlay">
+          <h1 className="text-7xl md:text-[10rem] font-serif text-[#FBF5E9] tracking-tighter leading-[0.85] w-full drop-shadow-2xl" style={{ textShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
             Dignidad en<br />el Transporte
           </h1>
           
