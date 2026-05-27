@@ -56,18 +56,12 @@ export default function Actua() {
         </p>
         
         <div className="w-full h-[700px] bg-white rounded-2xl flex items-center justify-center relative overflow-hidden reveal-item shadow-sm border border-[#117C4E]/20">
-          {/* TODO: SUSTITUIR ESTE IFRAME POR EL REAL DE GOOGLE FORMS */}
           <iframe 
-            src="about:blank" 
-            className="w-full h-full opacity-10"
+            src="https://docs.google.com/forms/d/1xQXCiNjlj4ta_BkyNrsVowkGYnNqB-VyIdn4X0KwrAA/viewform?embedded=true" 
+            className="w-full h-full"
             frameBorder="0"
             title="Formulario Alcalá se Mueve"
           ></iframe>
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="bg-[#117C4E] text-[#FBF5E9] px-6 py-3 rounded-full font-medium tracking-widest uppercase text-sm shadow-lg">
-              [TODO: Insertar Iframe de Encuesta]
-            </span>
-          </div>
         </div>
       </section>
 

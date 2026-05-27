@@ -112,18 +112,12 @@ export default function ElProblema() {
           Estos gráficos se actualizan automáticamente cada vez que alguien responde la encuesta. Son datos reales aportados por los usuarios en el día a día.
         </p>
         <div className="w-full h-[600px] bg-white border border-[#117C4E]/20 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-sm">
-          {/* TODO: SUSTITUIR EL SRC POR EL ENLACE REAL DE RESULTADOS PÚBLICOS DE GOOGLE FORMS */}
           <iframe 
-            src="about:blank" 
+            src="https://docs.google.com/forms/d/1xQXCiNjlj4ta_BkyNrsVowkGYnNqB-VyIdn4X0KwrAA/viewanalytics" 
             title="Resultados Encuesta"
-            className="w-full h-full opacity-50"
+            className="w-full h-full"
             frameBorder="0"
           ></iframe>
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="bg-[#011B11] text-[#FBF5E9] px-6 py-3 rounded-full font-medium tracking-widest uppercase text-sm">
-              [TODO: Insertar Iframe de Resultados]
-            </span>
-          </div>
         </div>
       </section>
     </div>
