@@ -71,10 +71,10 @@ export default function Home() {
       <section className="hero-section relative w-full h-[100svh] flex flex-col items-center justify-center overflow-hidden dark-zone">
         <div className="absolute inset-0 z-0 overflow-hidden bg-[#011B11]">
           <div 
-            className="parallax-bg w-full h-[125%] bg-cover bg-center will-change-transform"
-            style={{ backgroundImage: "url('/protesta/hero-autobus.jpg')", transform: "translateZ(0)" }}
+            className="parallax-bg w-full h-[125%] bg-cover bg-center will-change-transform opacity-60 mix-blend-luminosity"
+            style={{ backgroundImage: "url('/protesta/hero-bus.jpg')", transform: "translateZ(0)" }}
           />
-          <div className="absolute inset-0 bg-[#011B11]/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#011B11]/40 via-[#011B11]/80 to-[#011B11]" />
         </div>
         
         <div className="relative z-10 text-center px-4 w-full max-w-7xl flex flex-col items-center mt-12">
