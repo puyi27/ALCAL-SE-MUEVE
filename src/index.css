@@ -2,9 +2,23 @@
 
 @theme {
   --animate-bounce-slow: bounce 3s infinite;
+  --animate-marquee-vertical: marquee-vertical 40s linear infinite;
+
+  @keyframes marquee-vertical {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
 }
 
 body {
   background-color: #011B11;
   margin: 0;
+}
+
+.animate-marquee-vertical:hover {
+  animation-play-state: paused;
 }

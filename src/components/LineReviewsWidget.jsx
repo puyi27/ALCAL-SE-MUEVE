@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Papa from 'papaparse';
-import { MessageSquareQuote } from 'lucide-react';
+import { MessageSquareQuote, Star } from 'lucide-react';
 
 const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScm__hZw61CrXEInoebghnZVI6VL_0AGNBMSuDfBOHzlldlN9IdXdtPK3HrrbcIP9XgACx_9gQEzTK/pub?output=csv";
 
 export default function LineReviewsWidget() {
-  const [reviews, setReviews] = useState({
-    'M-121': 'Buscando opiniones recientes...',
-    'M-122': 'Buscando opiniones recientes...',
-    'M-123': 'Buscando opiniones recientes...'
-  });
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Papa.parse(CSV_URL, {
@@ -18,69 +15,88 @@ export default function LineReviewsWidget() {
       complete: (results) => {
         try {
           const rows = results.data.filter(row => row["Marca temporal"]);
-          
-          let r121 = null;
-          let r122 = null;
-          let r123 = null;
+          const realReviews = [];
 
-          // Buscar de las más recientes hacia atrás
-          for (let i = rows.length - 1; i >= 0; i--) {
-            const row = rows[i];
+          // Extraer todas las reseñas reales
+          rows.forEach(row => {
             const keys = Object.keys(row);
             const anecKey = keys.find(k => k.toLowerCase().includes("anécdota"));
+            const barrioKey = keys.find(k => k.toLowerCase().includes("barrio"));
             
             if (anecKey && row[anecKey] && row[anecKey].length > 15) {
-              const text = row[anecKey];
-              // Cortar el texto si es muy largo para que quepa bien en el widget
-              const truncate = (str) => str.length > 75 ? str.substring(0, 75) + "..." : str;
-
-              if (text.includes("121") && !r121) r121 = `"${truncate(text)}"`;
-              if (text.includes("122") && !r122) r122 = `"${truncate(text)}"`;
-              if (text.includes("123") && !r123) r123 = `"${truncate(text)}"`;
+              const text = row[anecKey].trim();
+              const barrio = row[barrioKey] ? row[barrioKey].trim() : "Alcalá";
+              
+              // Evitar respuestas basura
+              if (text.toLowerCase() !== 'no' && text.toLowerCase() !== 'ninguna') {
+                realReviews.push({ text, barrio });
+              }
             }
-          }
-
-          setReviews({
-            'M-121': r121 || '"Siempre va colapsada en horas punta..."',
-            'M-122': r122 || '"No se cumplen los horarios establecidos..."',
-            'M-123': r123 || '"Faltan muchísimos autobuses para la UPO..."'
           });
+
+          // Mezclar el array para que siempre salgan distintas al cargar
+          const shuffled = realReviews.sort(() => 0.5 - Math.random());
+          // Coger unas 10 para el carrusel
+          setReviews(shuffled.slice(0, 10));
+          setLoading(false);
         } catch (err) {
           console.error(err);
+          setLoading(false);
         }
       }
     });
   }, []);
 
-  const lines = [
-    { name: "M-121", route: "Alcalá - Sevilla (Centro)", color: "bg-red-500" },
-    { name: "M-122", route: "Alcalá - Sevilla (Directo)", color: "bg-orange-500" },
-    { name: "M-123", route: "Alcalá - UPO", color: "bg-red-600" },
-  ];
+  if (loading || reviews.length === 0) {
+    return (
+      <div className="w-full flex flex-col gap-6 relative z-10 mt-12 md:mt-0 opacity-50">
+        <div className="bg-[#011B11]/80 backdrop-blur-md rounded-3xl p-8 border border-[#117C4E]/30 w-full shadow-2xl h-[400px] flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#117C4E] border-t-transparent"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full flex flex-col gap-6 relative z-10 mt-12 md:mt-0">
-      <div className="bg-[#011B11]/80 backdrop-blur-md rounded-3xl p-8 border border-[#117C4E]/30 w-full shadow-2xl">
-        <h3 className="text-xl font-bold text-[#FBF5E9] mb-6 flex items-center gap-3">
-          <MessageSquareQuote className="w-6 h-6 text-[#117C4E]" />
-          Últimas Reseñas
-        </h3>
-        <div className="flex flex-col gap-5">
-          {lines.map((line, idx) => (
-            <div key={idx} className="flex flex-col border-b border-[#FBF5E9]/10 pb-4 last:border-0 last:pb-0">
-              <div className="flex items-center gap-3 mb-2">
-                <span className={`w-3 h-3 rounded-full ${line.color} animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.5)]`} />
-                <div className="flex flex-col">
-                  <span className="text-[#FBF5E9] font-medium leading-none">{line.name}</span>
-                  <span className="text-[#FBF5E9]/50 text-xs mt-1">{line.route}</span>
+      <div className="bg-[#011B11]/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-[#117C4E]/30 w-full shadow-2xl overflow-hidden flex flex-col h-[400px]">
+        
+        {/* Cabecera del Widget */}
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#FBF5E9]/10 shrink-0">
+          <h3 className="text-xl font-bold text-[#FBF5E9] flex items-center gap-3">
+            <MessageSquareQuote className="w-6 h-6 text-[#117C4E]" />
+            Testimonios Reales
+          </h3>
+          <div className="flex gap-1">
+            {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#117C4E] fill-[#117C4E]" />)}
+          </div>
+        </div>
+
+        {/* Contenedor del Carrusel Vertical (Marquee) */}
+        <div className="relative flex-1 overflow-hidden">
+          {/* Sombras superior e inferior para efecto de desvanecimiento */}
+          <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-[#011B11] to-transparent z-10 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#011B11] to-transparent z-10 pointer-events-none" />
+          
+          {/* Track animado. Usamos CSS en linea para una animación infinita simple */}
+          <div className="flex flex-col gap-4 animate-marquee-vertical">
+            {/* Duplicamos la lista para crear el efecto infinito sin cortes */}
+            {[...reviews, ...reviews].map((review, idx) => (
+              <div key={idx} className="bg-[#FBF5E9]/5 p-4 rounded-2xl border border-[#117C4E]/20 hover:bg-[#FBF5E9]/10 transition-colors">
+                <p className="text-[#FBF5E9]/90 font-light italic text-sm leading-relaxed mb-3 line-clamp-3">
+                  "{review.text}"
+                </p>
+                <div className="flex justify-end items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#117C4E] animate-pulse"></div>
+                  <span className="text-[#FBF5E9]/50 text-xs font-medium uppercase tracking-wider">
+                    {review.barrio}
+                  </span>
                 </div>
               </div>
-              <p className="text-[#FBF5E9]/80 font-light italic text-sm pl-6 border-l-2 border-[#117C4E]/50 ml-1">
-                {reviews[line.name]}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
       </div>
     </div>
   );
