@@ -57,16 +57,15 @@ export default function Actua() {
         
         <div className="w-full h-[700px] bg-white rounded-2xl flex items-center justify-center relative overflow-hidden reveal-item shadow-sm border border-[#117C4E]/20">
           <iframe 
-            src="about:blank" 
-            className="w-full h-full opacity-10"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSddnQ7lRKxyMImMjVOsMx6e-a8-GOJ4CIQShlj6znZmB-Tx2Q/viewform?embedded=true" 
+            className="w-full h-full"
             frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
             title="Formulario Alcalá se Mueve"
-          ></iframe>
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center px-4">
-            <span className="bg-[#117C4E] text-[#FBF5E9] px-6 py-3 rounded-full font-medium tracking-widest uppercase text-sm shadow-lg mb-4">
-              [Falta Enlace de Incrustar (Embed)]
-            </span>
-          </div>
+          >
+            Cargando…
+          </iframe>
         </div>
       </section>
 
