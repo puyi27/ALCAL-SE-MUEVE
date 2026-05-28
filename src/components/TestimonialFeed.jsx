@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Papa from 'papaparse';
 import { Quote } from 'lucide-react';
 
@@ -7,6 +7,7 @@ const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScm__hZw61CrXE
 export default function TestimonialFeed() {
   const [testimonios, setTestimonios] = useState([]);
   const [loading, setLoading] = useState(true);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     Papa.parse(CSV_URL, {
@@ -44,6 +45,98 @@ export default function TestimonialFeed() {
     });
   }, []);
 
+  // Auto-scroll logic
+  useEffect(() => {
+    if (testimonios.length === 0) return;
+
+    let animationId;
+    let isInteracting = false;
+    let scrollPos = 0;
+    
+    const slider = scrollRef.current;
+    if (!slider) return;
+
+    const autoScroll = () => {
+      if (!isInteracting) {
+         scrollPos += 0.5; // Velocidad del scroll automático
+         
+         if (scrollPos >= slider.scrollWidth / 2) {
+            scrollPos = 0;
+         }
+         slider.scrollLeft = scrollPos;
+      } else {
+         scrollPos = slider.scrollLeft;
+      }
+      animationId = requestAnimationFrame(autoScroll);
+    };
+    
+    autoScroll();
+    
+    const handleInteractStart = () => isInteracting = true;
+    const handleInteractEnd = () => {
+      isInteracting = false;
+      // Actualizar la posición para que no salte al soltar
+      if (slider) scrollPos = slider.scrollLeft;
+    };
+    
+    slider.addEventListener('touchstart', handleInteractStart, { passive: true });
+    slider.addEventListener('touchend', handleInteractEnd);
+    
+    let wheelTimeout;
+    const handleWheel = () => {
+       isInteracting = true;
+       clearTimeout(wheelTimeout);
+       wheelTimeout = setTimeout(handleInteractEnd, 150);
+    };
+    slider.addEventListener('wheel', handleWheel, { passive: true });
+
+    let isDown = false;
+    let startX;
+    let startScrollLeft;
+
+    const onMouseDown = (e) => {
+      isDown = true;
+      isInteracting = true;
+      slider.style.cursor = 'grabbing';
+      startX = e.pageX - slider.offsetLeft;
+      startScrollLeft = slider.scrollLeft;
+    };
+    const onMouseLeave = () => {
+      isDown = false;
+      isInteracting = false;
+      slider.style.cursor = 'grab';
+    };
+    const onMouseUp = () => {
+      isDown = false;
+      isInteracting = false;
+      slider.style.cursor = 'grab';
+    };
+    const onMouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = startScrollLeft - walk;
+    };
+
+    slider.addEventListener('mousedown', onMouseDown);
+    slider.addEventListener('mouseleave', onMouseLeave);
+    slider.addEventListener('mouseup', onMouseUp);
+    slider.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      slider.removeEventListener('touchstart', handleInteractStart);
+      slider.removeEventListener('touchend', handleInteractEnd);
+      slider.removeEventListener('wheel', handleWheel);
+      
+      slider.removeEventListener('mousedown', onMouseDown);
+      slider.removeEventListener('mouseleave', onMouseLeave);
+      slider.removeEventListener('mouseup', onMouseUp);
+      slider.removeEventListener('mousemove', onMouseMove);
+    }
+  }, [testimonios.length]);
+
   if (loading) {
     return (
       <div className="w-full py-12 flex justify-center text-[#117C4E]">
@@ -55,6 +148,9 @@ export default function TestimonialFeed() {
   if (testimonios.length === 0) {
     return null; 
   }
+
+  // Duplicamos los testimonios para el loop infinito
+  const CAROUSEL_ITEMS = [...testimonios, ...testimonios];
 
   return (
     <div className="w-full mt-24 overflow-hidden relative">
@@ -68,17 +164,26 @@ export default function TestimonialFeed() {
         </p>
       </div>
 
-      <div className="w-full relative px-4 md:px-8">
+      <div className="w-full relative px-4 md:px-8 group">
         <div 
-          className="grid grid-rows-1 md:grid-rows-2 grid-flow-col gap-6 overflow-x-auto pb-12 snap-x snap-mandatory custom-scrollbar"
-          style={{ gridAutoColumns: "minmax(300px, 400px)" }}
+          ref={scrollRef}
+          className="grid grid-rows-1 md:grid-rows-2 grid-flow-col gap-6 overflow-x-auto pb-12 cursor-grab"
+          style={{ 
+            gridAutoColumns: "minmax(300px, 400px)",
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none' 
+          }}
         >
-          {testimonios.map((t, idx) => (
-            <div key={idx} className="snap-start bg-white p-8 rounded-3xl border border-[#117C4E]/10 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between h-[350px]">
+          <style dangerouslySetInnerHTML={{__html: `
+            div::-webkit-scrollbar { display: none; }
+          `}} />
+
+          {CAROUSEL_ITEMS.map((t, idx) => (
+            <div key={idx} className="bg-white p-8 rounded-3xl border border-[#117C4E]/10 shadow-sm relative overflow-hidden flex flex-col justify-between h-[350px] transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
               <Quote className="absolute -top-4 -right-4 w-24 h-24 text-[#117C4E]/5 -rotate-12" strokeWidth={1} />
               
-              <div className="relative z-10 flex-1 overflow-y-auto custom-scrollbar pr-2 mb-4">
-                <p className="text-[#011B11]/80 font-light italic leading-relaxed text-lg">
+              <div className="relative z-10 flex-1 overflow-y-auto custom-scrollbar pr-2 mb-4 pointer-events-none">
+                <p className="text-[#011B11]/80 font-light italic leading-relaxed text-lg pointer-events-auto">
                   "{t.texto}"
                 </p>
               </div>
@@ -100,7 +205,7 @@ export default function TestimonialFeed() {
           ))}
         </div>
         
-        {/* Indicadores de desvanecimiento lateral para sugerir que hay más scroll */}
+        {/* Indicadores de desvanecimiento lateral */}
         <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#FBF5E9] to-transparent pointer-events-none z-20"></div>
         <div className="absolute top-0 left-0 w-8 md:w-16 h-full bg-gradient-to-r from-[#FBF5E9] to-transparent pointer-events-none z-20"></div>
       </div>
