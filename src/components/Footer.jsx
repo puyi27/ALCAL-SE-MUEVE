@@ -29,9 +29,15 @@ export default function Footer() {
           <p>
             Recomendamos contrastar los datos en las fuentes oficiales. No nos hacemos responsables del uso que terceros hagan de esta información. Los testimonios y denuncias publicados son responsabilidad de sus autores.
           </p>
-          <p className="mt-8 text-[#117C4E]">
-            &copy; {new Date().getFullYear()} Alcalá se Mueve.
-          </p>
+          <div className="mt-8 flex flex-col md:flex-row md:items-center gap-4 text-[#117C4E]">
+            <p>
+              &copy; {new Date().getFullYear()} Alcalá se Mueve.
+            </p>
+            <span className="hidden md:inline">•</span>
+            <Link to="/aviso-legal" className="hover:text-[#FBF5E9] transition-colors hover:underline">
+              Aviso Legal y Condiciones de Uso
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

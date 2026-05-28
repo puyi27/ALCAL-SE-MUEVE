@@ -7,6 +7,7 @@ import Actua from "./pages/Actua";
 import Directorio from "./pages/Directorio";
 import Actualidad from "./pages/Actualidad";
 import Nosotros from "./pages/Nosotros";
+import AvisoLegal from "./pages/AvisoLegal";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="directorio" element={<Directorio />} />
           <Route path="actualidad" element={<Actualidad />} />
           <Route path="nosotros" element={<Nosotros />} />
+          <Route path="aviso-legal" element={<AvisoLegal />} />
         </Route>
       </Routes>
     </BrowserRouter>
