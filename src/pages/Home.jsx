@@ -103,12 +103,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-[#FBF5E9]/70 flex flex-col items-center gap-4 z-10 opacity-70">
-          <span className="text-[10px] uppercase tracking-[0.3em]">Nuestra Protesta</span>
-          <div className="w-[1px] h-16 bg-[#FBF5E9]/20 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-[#117C4E] animate-bounce-slow" />
-          </div>
-        </div>
+
       </section>
 
       <div className="dark-zone w-full bg-[#117C4E] text-[#FBF5E9] py-4 border-y border-[#011B11]/10 overflow-hidden flex items-center">
