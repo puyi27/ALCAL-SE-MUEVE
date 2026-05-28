@@ -164,12 +164,11 @@ export default function TestimonialFeed() {
         </p>
       </div>
 
-      <div className="w-full relative px-4 md:px-8 group">
+      <div className="w-full relative group">
         <div 
           ref={scrollRef}
-          className="grid grid-rows-1 md:grid-rows-2 grid-flow-col gap-6 overflow-x-auto pb-12 cursor-grab"
+          className="flex w-full overflow-x-auto py-12 cursor-grab"
           style={{ 
-            gridAutoColumns: "minmax(300px, 400px)",
             scrollbarWidth: 'none', 
             msOverflowStyle: 'none' 
           }}
@@ -179,7 +178,7 @@ export default function TestimonialFeed() {
           `}} />
 
           {CAROUSEL_ITEMS.map((t, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-3xl border border-[#117C4E]/10 shadow-sm relative overflow-hidden flex flex-col justify-between h-[350px] transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
+            <div key={idx} className="w-[85vw] md:w-[400px] flex-shrink-0 mx-4 bg-white p-8 rounded-3xl border border-[#117C4E]/10 shadow-sm relative overflow-hidden flex flex-col justify-between h-[350px] transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
               <Quote className="absolute -top-4 -right-4 w-24 h-24 text-[#117C4E]/5 -rotate-12" strokeWidth={1} />
               
               <div className="relative z-10 flex-1 overflow-y-auto custom-scrollbar pr-2 mb-4 pointer-events-none">
