@@ -1,8 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Instagram } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { gsap } from "gsap";
 import Logo from "./Logo";
+
+const InstagramIcon = ({ size = 24 }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +74,7 @@ export default function Navigation() {
           ))}
           <div className="w-[1px] h-4 bg-[#011B11]/20"></div>
           <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="text-[#011B11]/70 hover:text-[#117C4E] transition-colors" title="Síguenos en Instagram">
-            <Instagram size={20} />
+            <InstagramIcon size={20} />
           </a>
         </nav>
       </header>
@@ -98,7 +116,7 @@ export default function Navigation() {
                 rel="noopener noreferrer" 
                 className="menu-link flex items-center gap-3 p-4 bg-[#FBF5E9] text-[#117C4E] rounded-full hover:scale-105 transition-transform"
               >
-                <Instagram size={24} />
+                <InstagramIcon size={24} />
                 <span className="font-medium tracking-wider uppercase text-sm pr-2">Instagram</span>
               </a>
             </div>
