@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram } from "lucide-react";
 import { gsap } from "gsap";
 import Logo from "./Logo";
 
@@ -16,6 +16,8 @@ export default function Navigation() {
     { name: "Actualidad", path: "/actualidad" },
     { name: "Sobre Nosotros", path: "/nosotros" },
   ];
+
+  const IG_LINK = "https://www.instagram.com/alcalasemueve?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
 
   useEffect(() => {
     setIsOpen(false);
@@ -40,7 +42,7 @@ export default function Navigation() {
         <Link to="/" className="hover:scale-105 transition-transform drop-shadow-md text-[#FBF5E9] mix-blend-difference">
           <Logo className="w-40 h-auto" />
         </Link>
-        <nav className="flex gap-8 bg-[#FBF5E9]/90 px-8 py-4 rounded-full border border-[#117C4E]/20 backdrop-blur-md shadow-sm">
+        <nav className="flex items-center gap-8 bg-[#FBF5E9]/90 px-8 py-4 rounded-full border border-[#117C4E]/20 backdrop-blur-md shadow-sm">
           {links.map((link, idx) => (
             <Link 
               key={idx}
@@ -52,13 +54,17 @@ export default function Navigation() {
               {link.name}
             </Link>
           ))}
+          <div className="w-[1px] h-4 bg-[#011B11]/20"></div>
+          <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="text-[#011B11]/70 hover:text-[#117C4E] transition-colors" title="Síguenos en Instagram">
+            <Instagram size={20} />
+          </a>
         </nav>
       </header>
 
       {/* BOTON HAMBURGUESA MOVIL */}
       <button 
         onClick={() => setIsOpen(true)}
-        className="md:hidden hamburger fixed top-6 right-6 z-[9000] p-4 bg-[#117C4E] text-[#FBF5E9] rounded-full hover:scale-105 transition-transform"
+        className="md:hidden hamburger fixed top-6 right-6 z-[9000] p-4 bg-[#117C4E] text-[#FBF5E9] rounded-full hover:scale-105 transition-transform shadow-md"
       >
         <Menu size={24} />
       </button>
@@ -84,6 +90,18 @@ export default function Navigation() {
                 </Link>
               </div>
             ))}
+            
+            <div className="overflow-hidden mt-8">
+              <a 
+                href={IG_LINK} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="menu-link flex items-center gap-3 p-4 bg-[#FBF5E9] text-[#117C4E] rounded-full hover:scale-105 transition-transform"
+              >
+                <Instagram size={24} />
+                <span className="font-medium tracking-wider uppercase text-sm pr-2">Instagram</span>
+              </a>
+            </div>
           </nav>
         </div>
       )}
